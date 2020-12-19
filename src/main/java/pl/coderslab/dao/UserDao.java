@@ -4,6 +4,8 @@ import pl.coderslab.model.User;
 import pl.coderslab.utils.DbUtil;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDao {
 
@@ -11,7 +13,7 @@ public class UserDao {
             "INSERT INTO users (username, email, password) VALUES (?, ?, ?);";
 
     private static final String READ_USER =
-            "SELECT * FROM users WHERE id = ?;";
+            "SELECT * FROM users;";
 
     private static final String UPDATE_USER =
             "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?;";
@@ -38,10 +40,12 @@ public class UserDao {
         }
     }
 
-    public User read(int userId) {
+    public List<User> read() {
+        List<User> users = new ArrayList<>();
+
         try (Connection conn = DbUtil.getConnection()) {
             PreparedStatement statement = conn.prepareStatement(READ_USER);
-            statement.setInt(1, userId);
+//            statement.setInt(1, userId);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 User user = new User();
@@ -49,7 +53,8 @@ public class UserDao {
                 user.setUserName(resultSet.getString("username"));
                 user.setEmail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
-                return user;
+                users.add(new User(user.getId(), user.getUserName(), user.getEmail(), user.getPassword()));
+                return users;
             }
         } catch (SQLException e) {
             e.printStackTrace();
