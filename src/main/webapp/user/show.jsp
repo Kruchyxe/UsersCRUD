@@ -23,19 +23,18 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table">
-                  <tr>
-                    <th>Id</th>
-                    <td>${user.id}</td>
-                  </tr>
-                  <tr>
-                      <th>Name</th>
-                      <td>${user.userName}</td>
-                  </tr>
-                   <tr>
-                       <th>Email</th>
-                       <td>${user.email}</td>
-                   </tr>
-
+                    <tr>
+                        <th>Id</th>
+                        <td>${user.id}</td>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <td>${user.userName}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>${user.email}</td>
+                    </tr>
                 </table>
             </div>
         </div>
