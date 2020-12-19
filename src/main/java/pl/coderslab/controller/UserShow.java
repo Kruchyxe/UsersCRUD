@@ -1,5 +1,8 @@
 package pl.coderslab.controller;
 
+import pl.coderslab.dao.UserDao;
+import pl.coderslab.model.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +17,12 @@ public class UserShow extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        UserDao userDao = new UserDao();
+        User read = userDao.read(Integer.parseInt(id));
+        request.setAttribute("user", read);
+        getServletContext().getRequestDispatcher("/user/show.jsp")
+                .forward(request, response);
 
     }
 }

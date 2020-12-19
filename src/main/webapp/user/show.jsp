@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: krzysiek
-  Date: 16.12.2020
-  Time: 18:50
+  Date: 19.12.2020
+  Time: 20:25
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -48,9 +48,3 @@
 </div>
 <!-- /.container-fluid -->
 <%@ include file="/footer.jsp" %>
-
-
-
-
-
-
